@@ -30,14 +30,13 @@ const SocialPlatforms = () => {
     {
       name: "食べログ",
       id: "ossykun1320",
-      url: "https://tabelog.com/rvwr/ossykun1320/",
+      url: "https://tabelog.com/rvwr/026357485/",
       icon: <span className="text-2xl">🍴</span>,
       color: "from-red-500 via-red-400 to-orange-400",
     },
     {
       name: "Google口コミ",
-      id: "Local Guide",
-      url: "#",
+      id: "オッシーKUN",
       icon: <Star className="w-8 h-8" />,
       color: "from-blue-400 via-indigo-400 to-purple-400",
     },

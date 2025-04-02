@@ -1,15 +1,43 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Play } from "lucide-react";
+import { useState } from "react";
 
 const Gallery = () => {
-  const images = [
-    "https://images.unsplash.com/photo-1554502078-ef0fc409efce?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1635321593217-40050ad13c74?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1602273660095-0d3d1a551259?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1546549032-9571cd6b27df?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=800&auto=format&fit=crop",
+  const [hoveredVideo, setHoveredVideo] = useState<number | null>(null);
+
+  const items = [
+    {
+      type: "video",
+      url: "/videos/short1.mp4",
+      thumbnail: "/images/thumbnail1.jpg",
+    },
+    {
+      type: "video",
+      url: "/videos/short2.mp4",
+      thumbnail: "/images/thumbnail1.jpg",
+    },
+    {
+      type: "video",
+      url: "/videos/short3.mp4",
+      thumbnail: "/images/thumbnail1.jpg",
+    },
+    {
+      type: "video",
+      url: "/videos/short4.mp4",
+      thumbnail: "/images/thumbnail2.jpg",
+    },
+    {
+      type: "video",
+      url: "/videos/short5.mp4",
+      thumbnail: "/images/thumbnail1.jpg",
+    },
+    {
+      type: "video",
+      url: "/videos/short6.mp4",
+      thumbnail: "/images/thumbnail1.jpg",
+    },
   ];
 
   return (
@@ -27,7 +55,7 @@ const Gallery = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {images.map((image, index) => (
+          {items.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -35,13 +63,34 @@ const Gallery = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
-              className="relative aspect-square overflow-hidden rounded-lg shadow-lg"
+              className="relative overflow-hidden rounded-lg shadow-lg group [aspect-ratio:9/16]"
+              onMouseEnter={() => setHoveredVideo(index)}
+              onMouseLeave={() => setHoveredVideo(null)}
             >
-              <img
-                src={image}
-                alt={`Gallery image ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
+              {item.type === "video" ? (
+                <>
+                  <video
+                    src={item.url}
+                    poster={item.thumbnail}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    controls
+                    controlsList="nodownload"
+                    playsInline
+                    preload="metadata"
+                  />
+                  {hoveredVideo === index && (
+                    <div className="absolute inset-0 bg-black bg-opacity-40 pointer-events-none flex items-center justify-center">
+                      <Play className="w-12 h-12 text-white" />
+                    </div>
+                  )}
+                </>
+              ) : (
+                <img
+                  src={item.url}
+                  alt={`Gallery item ${index + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              )}
             </motion.div>
           ))}
         </div>

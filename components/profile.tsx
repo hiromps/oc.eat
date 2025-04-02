@@ -27,9 +27,9 @@ const Profile = () => {
             transition={{ duration: 0.6 }}
           >
             <img
-              src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?q=80&w=2000&auto=format&fit=crop"
+              src="/images/profile.png"
               alt="おっしー"
-              className="rounded-lg shadow-lg"
+              className="rounded-lg"
             />
           </motion.div>
 
@@ -49,7 +49,7 @@ const Profile = () => {
               <Card>
                 <CardContent className="p-4 text-center">
                   <Utensils className="w-8 h-8 text-orange-600 mx-auto mb-2" />
-                  <h4 className="font-semibold">1000+</h4>
+                  <h4 className="font-semibold">300+</h4>
                   <p className="text-sm text-gray-500">店舗訪問</p>
                 </CardContent>
               </Card>
@@ -65,7 +65,7 @@ const Profile = () => {
               <Card>
                 <CardContent className="p-4 text-center">
                   <Heart className="w-8 h-8 text-orange-600 mx-auto mb-2" />
-                  <h4 className="font-semibold">100万+</h4>
+                  <h4 className="font-semibold">3万+</h4>
                   <p className="text-sm text-gray-500">総フォロワー</p>
                 </CardContent>
               </Card>

@@ -20,6 +20,24 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 1.2,
+              delay: 0.3,
+              type: "spring",
+              stiffness: 50,
+              damping: 15
+            }}
+            className="mb-8"
+          >
+            <img
+              src="/images/profile.png"
+              alt="おっしー"
+              className="w-48 h-48 mx-auto rounded-full border-4 border-white shadow-xl"
+            />
+          </motion.div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             おっしー【関西グルメ】
           </h1>
